@@ -26,7 +26,7 @@ app.controller("todoController" , function($scope, $http){
 		
 		 $http({
              method : 'GET',
-             url : 'http://localhost:9090/TodoListManagerJPA/todos/getAllTodos'
+             url : 'http://ec2-18-188-59-50.us-east-2.compute.amazonaws.com:9090/TodoListManagerJPA/todos/getAllTodos'
          }).then(function successCallback(response) {
              $scope.todos = response.data;
              
@@ -43,11 +43,11 @@ app.controller("todoController" , function($scope, $http){
         if ($scope.todoForm.id == -1) {
             //Id is absent in form data, it is create new todo operation
             method = "POST";
-            url = 'http://localhost:9090/TodoListManagerJPA/todos/addTodo';
+            url = 'http://ec2-18-188-59-50.us-east-2.compute.amazonaws.com:9090/TodoListManagerJPA/todos/addTodo';
         } else {
             //Id is present in form data, it is edit todo operation
             method = "PUT";
-            url = 'http://localhost:9090/TodoListManagerJPA/todos/updateTodo';
+            url = 'http://ec2-18-188-59-50.us-east-2.compute.amazonaws.com:9090/TodoListManagerJPA/todos/updateTodo';
         }
 
         $http({
@@ -63,7 +63,7 @@ app.controller("todoController" , function($scope, $http){
     $scope.deleteTodo = function(todo) {
         $http({
             method : 'DELETE',
-            url : 'http://localhost:9090/TodoListManagerJPA/todos/deleteTodo/' + todo.id
+            url : 'http://ec2-18-188-59-50.us-east-2.compute.amazonaws.com:9090/TodoListManagerJPA/todos/deleteTodo/' + todo.id
         }).then(_success, _error);
     };
 
